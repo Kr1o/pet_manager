@@ -1,9 +1,16 @@
-import datetime
+'''
+charly = pet.Pet('Cake', datetime.date(2000, 12, 22), 13500, 600, True, True, datetime.date(2011, 11, 11), datetime.date(2012, 12, 12))
 
-import pet
-from connect_db import Pet, session
+print(charly)
 
-charly = pet.Pet('Чарли', '26.04.2015')
+add_db = Pet(name=charly.name, birth_date=charly.birth_date, feed_weight=charly.feed_weight,
+             vaccination=charly.vaccination, tick_protect=charly.tick_protect, vaccination_date=charly.vaccination_date,
+             tick_protect_date=charly.tick_protect_date)
+
+session.add(add_db)
+session.commit()
+
+
 
 print(f'Кличка: {charly.name}', f'День рождения: {charly.birth_date}')
 
@@ -38,7 +45,10 @@ while charly.feed_weight >= charly.feed_in_day:
     print(f'Этого хватит на {charly.calculate_feed()} дней')
     charly.feed_weight -= charly.feed_in_day
 
-print(charly.age())
+#print(charly.age())
+
+print(charly)
+
 
 print('====== ТЕСТ ДОБАВЛЕНИЯ В БАЗУ ДАННЫХ ======')
 new_pet = Pet(name='Монти', birth_date=datetime.date(2015, 5, 26))
@@ -50,3 +60,4 @@ print('====== ТЕСТ ЗАПРОСА К БД ======')
 for r in session.query(Pet, Pet.name).all():
     print(r.Pet, r.name)
 print('====== OK ======')
+'''

@@ -27,13 +27,6 @@ class Pet:
         calculate_feed = self.feed_weight // self.feed_in_day
         return calculate_feed
 
-    def age(self):
-        today = date.today()
-        birth_date = self.birth_date.split('.')
-        birth_date = date(int(birth_date[2]), int(birth_date[1]), int(birth_date[0]))
-        age = today.year - birth_date.year - ((today.month, today.day) < (birth_date.month, birth_date.day))
-        return age
-
     def do_vaccination(self):
         self.vaccination_date = date.today()
         self.vaccination = True
@@ -41,3 +34,13 @@ class Pet:
     def do_tick_protect(self):
         self.tick_protect_date = date.today()
         self.tick_protect = True
+
+
+'''
+    def age(self):
+        today = date.today()
+        birth_date = self.birth_date.split('.')
+        birth_date = date(int(birth_date[2]), int(birth_date[1]), int(birth_date[0]))
+        age = today.year - birth_date.year - ((today.month, today.day) < (birth_date.month, birth_date.day))
+        return age
+'''

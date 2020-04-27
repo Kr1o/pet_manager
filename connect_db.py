@@ -11,6 +11,23 @@ Session = sessionmaker(bind=engine)
 session = Session()
 
 
+class User(Base):
+    __tablename__ = 'user'
+
+    id = Column(Integer, primary_key=True)
+    name = Column(String)
+    birth_date = Column(Date)
+    feed_weight = Column(Integer)
+    feed_in_day = Column(Integer)
+    vaccination = Column(Boolean)
+    tick_protect = Column(Boolean)
+    vaccination_date = Column(Date)
+    tick_protect_date = Column(Date)
+
+    def __repr__(self):
+        return "Имя: '%s', Дата рождения: '%s'" % (self.name, self.birth_date)
+
+
 class Pet(Base):
     __tablename__ = 'pet'
 
