@@ -4,7 +4,7 @@ from datetime import date
 class Pet:
 
     def __init__(self, name,
-                 birth_date,
+                 birth_date=None,
                  feed_weight=0,
                  feed_in_day=0,
                  vaccination=False,

@@ -1,4 +1,7 @@
-import pet, time
+import datetime
+
+import pet
+from connect_db import Pet, session
 
 charly = pet.Pet('Чарли', '26.04.2015')
 
@@ -30,11 +33,20 @@ else:
 
 print('Защищен ли от клещей?')
 
-
-
 while charly.feed_weight >= charly.feed_in_day:
     print(f'Осталось {charly.feed_weight / 1000} кг корма')
     print(f'Этого хватит на {charly.calculate_feed()} дней')
     charly.feed_weight -= charly.feed_in_day
 
 print(charly.age())
+
+print('====== ТЕСТ ДОБАВЛЕНИЯ В БАЗУ ДАННЫХ ======')
+new_pet = Pet(name='Монти', birth_date=datetime.date(2015, 5, 26))
+session.add(new_pet)
+session.commit()
+print('====== OK ======')
+
+print('====== ТЕСТ ЗАПРОСА К БД ======')
+for r in session.query(Pet, Pet.name).all():
+    print(r.Pet, r.name)
+print('====== OK ======')
