@@ -44,3 +44,4 @@ class Pet(Base):
 
     def __repr__(self):
         return "Имя: '%s', Дата рождения: '%s'" % (self.name, self.name)
+
